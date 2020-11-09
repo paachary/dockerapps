@@ -33,7 +33,7 @@ EXPOSE 5000
 
 WORKDIR /home/microblog
 
-COPY postgres_commands.sql
+COPY postgres_commands.sql ./
 
 COPY boot.sh ./
 

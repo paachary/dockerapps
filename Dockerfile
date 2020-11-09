@@ -10,7 +10,7 @@ RUN adduser --home /home/microblog --shell /bin/bash microblog
 
 WORKDIR /home/microblog
 
-RUN apt update && apt install -y git psycopg2 libpq-dev -y
+RUN apt update && apt install -y git psycopg2 libpq-dev 
 
 RUN git clone https://github.com/paachary/flask-app.git
 

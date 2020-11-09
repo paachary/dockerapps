@@ -16,12 +16,11 @@ RUN git clone https://github.com/paachary/flask-app.git
 
 WORKDIR /home/microblog/flask-app
 
-RUN python -m venv myenv
+RUN pip install virtualenv
 
 RUN . myenv/bin/activate
 
 RUN pip install -r requirements.txt
-
 
 ENV FLASK_APP microblog.py
 

@@ -10,17 +10,19 @@ RUN adduser --home /home/microblog --shell /bin/bash microblog
 
 WORKDIR /home/microblog
 
-RUN apt update && apt install -y git libpq-dev 
+RUN apt update && apt install -y git libpq-dev python3-pip
 
 RUN git clone https://github.com/paachary/flask-app.git
 
 WORKDIR /home/microblog/flask-app
 
-RUN pip install virtualenv
+RUN pip3 install virtualenv
+
+RUN virtualenv myenv
 
 RUN . myenv/bin/activate
 
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 ENV FLASK_APP microblog.py
 
@@ -36,6 +38,6 @@ COPY postgres_commands.sql ./
 
 COPY boot.sh ./
 
-RUN chmod a+x boot.sh
+RUN chmod +x boot.sh
 
 ENTRYPOINT ["./boot.sh"]

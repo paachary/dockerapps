@@ -7,6 +7,7 @@ export POSTGRES_DB="employee_db"
 cd /home/microblog/flask-app
 
 source myenv/bin/activate
+flask init
+flask migrate -m "installing the db code"
 flask db upgrade
-flask translate compile
 exec gunicorn -b :5000 --access-logfile - --error-logfile - microblog:app

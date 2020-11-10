@@ -28,10 +28,6 @@ ENV FLASK_APP microblog.py
 
 RUN chown -R microblog:microblog ./
 
-USER microblog
-
-EXPOSE 5000
-
 WORKDIR /home/microblog
 
 COPY postgres_commands.sql ./
@@ -39,5 +35,9 @@ COPY postgres_commands.sql ./
 COPY boot.sh ./
 
 RUN chmod +x boot.sh
+
+USER microblog
+
+EXPOSE 5000
 
 ENTRYPOINT ["./boot.sh"]

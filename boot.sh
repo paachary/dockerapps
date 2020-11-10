@@ -1,7 +1,7 @@
 #!/bin/sh
 cd /home/microblog/flask-app
 
-source myenv/bin/activate
+. myenv/bin/activate
 flask db init
 flask db migrate -m "installing the db code"
 flask db upgrade

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+docker build -t webapp .
+
 docker run --name postgres -e POSTGRES_USER=employee_usr -e POSTGRES_PASSWORD=emp@13%loyee^ -e POSTGRES_DATABASE=employee_db -d postgres
 
 docker cp postgres_commands.sql postgres:docker-entrypoint-initdb.d/postgres_commands.sql

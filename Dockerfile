@@ -30,8 +30,6 @@ RUN chown -R microblog:microblog ./
 
 WORKDIR /home/microblog
 
-COPY postgres_commands.sql postgres:/docker-entrypoint-initdb.d/postgres_commands.sql 
-
 COPY boot.sh ./
 
 RUN chmod +x boot.sh

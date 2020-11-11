@@ -1,12 +1,18 @@
 #!/bin/sh
 
+
+## Create a network which will be using the bridge type (default) so that we will run our containers in the same network 
+## using the bridge
+
+docker network create mynetwork
+
+## Build the docker image
 docker build -t webapp .
 
-docker run --name postgres -e POSTGRES_USER=employee_usr -e POSTGRES_PASSWORD=emp@13%loyee^ -e POSTGRES_DATABASE=employee_db -d postgres
+## Run the postgres container with the appropriate parameters in the network created locally.
+docker run --network mynetwork --name postgres -e POSTGRES_USER=employee_usr -e POSTGRES_PASSWORD=emp@13%loyee^ -e POSTGRES_DB=employee_db -d postgres
 
-docker cp postgres_commands.sql postgres:docker-entrypoint-initdb.d/postgres_commands.sql
-
-docker exec -it postgres psql -U employee_usr -f docker-entrypoint-initdb.d/postgres_commands.sql
-
-docker run --name webapp -d -p 8000:5000 --rm --link postgres:dbserver -e POSTGRES_URL=dbserver -e POSTGRES_USER=employee_usr -e POSTGRES_DB=employee_db -e POSTGRES_PW=emp@13%loyee^ webapp:latest
+## Run the webapp container in the same network.
+## To reference the postgres containers, just invoke the postgres container name which is the host name
+docker run --network mynetwork --name webapp -d -p 8000:5000 --rm -e POSTGRES_USER=employee_usr -e POSTGRES_PASSWORD=emp@13%loyee^ -e POSTGRES_DB=employee_db -e POSTGRES_URL=postgress_app:5432 -e POSTGRES_PW=emp@13%loyee^ webapp:latest
 

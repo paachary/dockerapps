@@ -1,0 +1,21 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user/dockerapps
+permissions:
+  - object: /home/ec2-user/dockerapps/docker.sh
+    owner: ec2-user
+    mode: 655
+  - object: /home/ec2-user/dockerapps/pre-install.sh
+    owner: ec2-user
+    mode: 655
+hooks:
+  BeforeInstall:
+    - location: /home/ec2-user/dockerapps/pre-install.sh
+      timeout: 300
+      runas: ec2-user	
+  AfterInstall:
+    - location: /home/ec2-user/dockerapps/docker.sh
+      timeout: 300
+      runas: ec2-user

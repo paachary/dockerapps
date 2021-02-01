@@ -4,7 +4,7 @@ files:
   - source: /
     destination: /home/ec2-user
 permissions:
-  - object: /home/ec2-user/docker.sh
+  - object: /home/ec2-user/docker-commands.sh
     owner: ec2-user
     mode: 4755
     group: ec2-user
@@ -12,3 +12,8 @@ permissions:
     owner: ec2-user
     group: ec2-user
     mode: 4755
+hooks:
+  BeforeInstall:
+    - location: /home/ec2-user/pre-install.sh
+      timeout: 300
+      runas: ec2-user

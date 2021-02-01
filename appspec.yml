@@ -13,7 +13,7 @@ permissions:
     group: ec2-user
     mode: 4755
 hooks:
-  BeforeInstall:
+  AfterInstall:
     - location: /home/ec2-user/pre-install.sh
       timeout: 300
       runas: ec2-user

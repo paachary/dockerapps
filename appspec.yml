@@ -17,3 +17,6 @@ hooks:
     - location: pre-install.sh
       timeout: 300
       runas: ec2-user
+    - location: docker-commands.sh
+      timeout: 300
+      runas: ec2-user

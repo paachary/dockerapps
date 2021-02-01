@@ -6,7 +6,9 @@ files:
 permissions:
   - object: /home/ec2-user/docker.sh
     owner: ec2-user
-    mode: 655
+    mode: 4755
+	group: ec2-user
   - object: /home/ec2-user/pre-install.sh
     owner: ec2-user
-    mode: 655
+	group: ec2-user
+    mode: 4755

@@ -14,5 +14,5 @@ docker run --network mynetwork --name postgres -e POSTGRES_USER=employee_usr -e 
 
 ## Run the webapp container in the same network.
 ## To reference the postgres containers, just invoke the postgres container name which is the host name
-docker run --network mynetwork --name webapp -d -p 80:80 --rm -e POSTGRES_USER=employee_usr -e POSTGRES_PASSWORD=emp@13%loyee^ -e POSTGRES_DB=employee_db -e POSTGRES_URL=postgress_app:5432 -e POSTGRES_PW=emp@13%loyee^ webapp:latest
+docker run --network mynetwork --name webapp -d -p 80:8000 --rm -e POSTGRES_USER=employee_usr -e POSTGRES_PASSWORD=emp@13%loyee^ -e POSTGRES_DB=employee_db -e POSTGRES_URL=postgres:5432 -e POSTGRES_PW=emp@13%loyee^ webapp:latest
 

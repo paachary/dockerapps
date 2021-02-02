@@ -3,7 +3,8 @@
 cd /home/microblog/flask-app
 
 . myenv/bin/activate
-flask db init
+
+flask db stamp head
 flask db migrate -m "installing the db code"
 flask db upgrade
-exec gunicorn -b :80 --access-logfile - --error-logfile - microblog:app --daemon 
+exec gunicorn -b :8000 --access-logfile - --error-logfile - microblog:app --daemon 

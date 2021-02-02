@@ -4,8 +4,6 @@ MAINTAINER BlogWebApp
 
 FROM python:latest
 
-FROM postgres:latest
-
 RUN adduser --home /home/microblog --shell /bin/bash microblog
 
 WORKDIR /home/microblog
